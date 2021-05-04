@@ -38,7 +38,7 @@ public class MemberService {
     /*
     * 전체회원조회
     * */
-    public List<Member> findMember(){
+    public List<Member> findMembers(){
         return memberRepositiory.findAll();
     }
 
