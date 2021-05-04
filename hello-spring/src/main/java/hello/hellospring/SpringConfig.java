@@ -22,27 +22,37 @@ public class SpringConfig {
 //    }
 
     //아래는 jap용 상기는 다른 용(jdbc template등)
-    private EntityManager em;
+//    private EntityManager em;
+//
+//    @Autowired
+//    public SpringConfig(EntityManager em) {
+//        this.em = em;
+//    }
 
-    @Autowired
-    public SpringConfig(EntityManager em) {
-        this.em = em;
+
+    //s-d jpa용
+    private final MemberRepositiory memberRepositiory;
+    @Autowired //생성자 하나니까 생략해도 됨
+    public SpringConfig(MemberRepositiory memberRepositiory) {
+        this.memberRepositiory = memberRepositiory;
     }
+
 
 
     @Bean
     public MemberService memberService(){
 
-        return new MemberService(memberRepositiory());
+        return new MemberService(memberRepositiory);
     }
 
-    @Bean
-    public MemberRepositiory memberRepositiory(){
-        //조립해줌!
-        //return new MemoryMemberRepository();
-        //return new JdbcMemberRepository(dataSource);
-        //return new JdbcTemplateMemberRepository(dataSource);
-        return new JpaMemberRepository(em);
-
-    }
+//    @Bean
+//    public MemberRepositiory memberRepositiory(){
+//        //조립해줌!
+//        //return new MemoryMemberRepository();
+//        //return new JdbcMemberRepository(dataSource);
+//        //return new JdbcTemplateMemberRepository(dataSource);
+//        //return new JpaMemberRepository(em);
+//
+//
+//    }
 }
