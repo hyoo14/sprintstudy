@@ -28,6 +28,7 @@ public class MemberController {
         //요즘권장. 생성시점에 딱 넣고 그 다음에는 변경 못 하도록 막을 수 있음
         //생성자 주입 방법..1번째 방법
         this.memberService = memberService;
+        System.out.println("memberService = "+memberService.getClass());
     }
 
     @GetMapping("/members/new")

@@ -1,5 +1,6 @@
 package hello.hellospring;
 
+import hello.hellospring.aop.TimeTraceAop;
 import hello.hellospring.repository.*;
 import hello.hellospring.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +45,11 @@ public class SpringConfig {
 
         return new MemberService(memberRepositiory);
     }
+
+//    @Bean //이렇게 해주거나 컴포즈 스캔? 써도 됨.. 여기서는 컴포즈 스캔(Component) 쓰지만 일반적으로는 빈등록이 더 많이 씀
+//    public TimeTraceAop timeTraceAop(){
+//        return new TimeTraceAop();
+//    }
 
 //    @Bean
 //    public MemberRepositiory memberRepositiory(){
